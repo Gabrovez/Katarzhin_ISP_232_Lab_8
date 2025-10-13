@@ -1,21 +1,15 @@
-﻿namespace Katarzhin_ISP_232_Lab_8
+﻿using MyApp.Models;
+namespace Katarzhin_ISP_232_Lab_8
 {
     internal class Program
     {
         static void Main(string[] args)
         {
-            Car car1 = new Car();
-            car1.Brand = "Dodge";
-            car1.Model = "Challenger";
-            car1.Year = 2009;
-            car1.Mileage = 300;
-            car1.PrintInfo();
-            Car car2 = new Car();
-            car2.Brand = "Porche";
-            car2.Model = "911 GTR 3s";
-            car2.Year = 2015;
-            car2.Mileage = 500;
-            car2.PrintInfo();
+            User user = new User();
+            user.Name = "Олег";
+            user.email = "goodwork@gmai.com";
+            user.IsActice = true;
+            user.PrintInfo();
 
 
         }
