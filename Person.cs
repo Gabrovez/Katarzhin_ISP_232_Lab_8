@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Katarzhin_ISP_232_Lab_8
+/*namespace Katarzhin_ISP_232_Lab_8
 {
     internal class Person
     {
@@ -15,3 +15,4 @@ namespace Katarzhin_ISP_232_Lab_8
         public void Print() => Console.WriteLine($"Name: {name} Age: {age}");
     }
 }
+*/
