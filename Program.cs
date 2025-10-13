@@ -5,11 +5,19 @@ namespace Katarzhin_ISP_232_Lab_8
     {
         static void Main(string[] args)
         {
-            User user = new User();
-            user.Name = "Олег";
-            user.email = "goodwork@gmai.com";
-            user.IsActice = true;
-            user.PrintInfo();
+            ValueChecker vc = new ValueChecker();
+            vc.CheckType(5);
+            vc.CheckType("Hello");
+            vc.CheckType(3.14);
+            vc.CheckType(3.14f);
+            vc.CheckType(true);
+            vc.CheckType(123.4m);
+            vc.CheckType(new object());
+            vc.CheckType('A');
+
+
+
+
 
 
         }
