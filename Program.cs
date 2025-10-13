@@ -1,21 +1,21 @@
-﻿using Base;
-namespace Katarzhin_ISP_232_Lab_8
+﻿namespace Katarzhin_ISP_232_Lab_8
 {
     internal class Program
     {
         static void Main(string[] args)
         {
-            Person tom = new("Tom");
-            tom.print();
+            Company microsoft = new("Microsoft");
+            Person tom = new("Tom", microsoft);
+            tom.Print();
         }
     }
 }
 namespace Base
 {
-    class Person
+    class Company
     {
-        string Name;
-        public Person(string name) => Name = name;
-        public void print() => Console.WriteLine($"Имя: {Name}");
+        string title;
+        public Company(string title) => this.title = title;
+        public void print() => Console.WriteLine($"Компания: {title}");
     }
 }
