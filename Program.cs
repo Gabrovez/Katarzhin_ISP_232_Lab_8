@@ -4,14 +4,19 @@
     {
         static void Main(string[] args)
         {
-            Persom ahri = new();
-            Persom brand = new("Brand");
-            Persom darius = new("Darius", 25);
-            ahri.Print(); 
-            brand.Print(); 
-            darius.Print(); 
+            int a = 5;
+            int b = a;
+            b = 10;
+            Console.WriteLine(a);
+            Console.WriteLine(b);
+            Person p1 = new Person();
+            p1.name = "Denis";
+            Person p2 = p1; // р2 указывает на тот же объект р1
+            p2.name = "Anton";
+            Console.WriteLine(p1.name); // Anton
+            Console.WriteLine(p2.name);
         }
-        struct Persom
+        /*struct Persom
         {
             public string name; public int age;
             public Persom()
@@ -25,6 +30,16 @@
             }
             public void Print()=> Console.WriteLine($"Имя: {name} Возраст: {age}");
             
+        }*/
+        class Person
+        {
+            public string? name;
+
+        }
+        void Ex()
+        {
+            int x = 5;
+            int[] arr = new int[100];
         }
     }
 }
