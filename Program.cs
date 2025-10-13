@@ -1,4 +1,5 @@
-﻿namespace Katarzhin_ISP_232_Lab_8
+﻿using System;
+namespace Katarzhin_ISP_232_Lab_8
 {
     internal class Program
     {
@@ -16,6 +17,6 @@ namespace Base
     {
         string title;
         public Company(string title) => this.title = title;
-        public void print() => Console.WriteLine($"Компания: {title}");
+        public void print() => System.Console.WriteLine($"Компания: {title}");
     }
 }
