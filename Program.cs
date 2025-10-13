@@ -5,27 +5,30 @@ namespace Katarzhin_ISP_232_Lab_8
     {
         static void Main(string[] args)
         {
-            ValueChecker vc = new ValueChecker();
-            vc.CheckType(5);
-            vc.CheckType("Hello");
-            vc.CheckType(3.14);
-            vc.CheckType(3.14f);
-            vc.CheckType(true);
-            vc.CheckType(123.4m);
-            vc.CheckType(new object());
-            vc.CheckType('A');
-
-
-
-
-
+            global::System.Console.WriteLine("....");
 
         }
+        //Не работает потому что он использует мой класс system, а не встроенный. В моём классе нет метода Console 
+        //Теперь работает потому что указано что надо использовать встроенный класс system
+    }
+    class System
+    {
+
+    }
+
+ }
+namespace Base
+{
+    class Company
+    {
+        string title;
+        public Company(string title) => this.title = title;
+        public void print() => Console.WriteLine($"Компания: {title}");
         public struct Point2D
         {
             public int X;
             public int Y;
-            public  Point2D(int x, int y)
+            public Point2D(int x, int y)
             {
                 X = x;
                 Y = y;
@@ -35,18 +38,9 @@ namespace Katarzhin_ISP_232_Lab_8
                 int dx = X - other.X;
                 int dy = Y - other.Y;
 
-                return Math.Sqrt(dx * dx + dy* dy);
+                return Math.Sqrt(dx * dx + dy * dy);
             }
-            
+
         }
-    }
- }
-namespace Base
-{
-    class Company
-    {
-        string title;
-        public Company(string title) => this.title = title;
-        public void print() => Console.WriteLine($"Компания: {title}");
     }
 }
