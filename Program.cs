@@ -7,15 +7,16 @@ namespace Katarzhin_ISP_232_Lab_8
 {// я не понял где первый комит потому что я же вроде его с этого проекта тоже отправил типо и класс у меня новый здесь есть using MyClass; тоже горит, ну ладно
     internal class Program{
         static void Main(string[] args){
-            string? text = null;
-            Console.WriteLine(text?.Length);
-            string? name = null;
-            string result = name ?? "Default";
-            #nullable enable
-            string? name_ = null;
-            Console.WriteLine(name_!.Length);
-            #nullable disable
-            string hero = null;
+            int? val = null;
+            IsNull(val);
+            val = 22;   
+            IsNull(val);
+            void IsNull(int? obj)
+            {
+                if (obj == null) Console.WriteLine("null");
+                else Console.WriteLine(obj);
+            }
+            Console.WriteLine(val);
 
 
 
