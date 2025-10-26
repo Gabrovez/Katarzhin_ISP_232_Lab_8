@@ -9,34 +9,18 @@ using System.ComponentModel;
 namespace Katarzhin_ISP_232_Lab_8
 {
     internal class Program{
-        static async Task Main(){
-            Console.Write("Enter site's url: ");
-            string? url = Console.ReadLine();
-            if (!string.IsNullOrEmpty(url))
-            {
-                try
-                {
-                    HtmlWeb web = new HtmlWeb();
-
-                    HtmlDocument doc = new HtmlDocument();
-                    doc = await web.LoadFromWebAsync(url);
-                    var titleNode = doc.DocumentNode.SelectSingleNode("//title");
-                    if (titleNode != null)
-                    {
-                        Console.WriteLine($"Title of the page: {titleNode.InnerText}");
-                    }
-                    else
-                    {
-                        Console.WriteLine($"Title of the page is nowhere to be found");
-                    }
-                }
-                catch (Exception ex)
-                {
-                    Console.WriteLine("Error: " + ex.Message);
-                }
-
-
-            }
+        public delegate void Logger(string message);
+        public static void LogToConsole(string message)
+        {
+            Console.WriteLine($"[Log]: {message}");
+        }
+        static void Main(string[] args)
+        {
+            Logger logger = LogToConsole;
+            logger("Я создал землю для людей");
+            logger("Ну кроме антрактики");
+            logger("Она для пингвинчиков");
+            logger("Люблю пингвинчиков");
         }
     }      
  }
