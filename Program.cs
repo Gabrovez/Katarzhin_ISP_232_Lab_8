@@ -7,25 +7,30 @@ namespace Katarzhin_ISP_232_Lab_8
 {
     internal class Program{
         static void Main(string[] args){
-           
-            string? GetUserName(int id)
-            {
-                return id == 1 ? "Alice" : null;
-            }
-            var user = GetUserName(2);
-            Console.WriteLine(user?.ToUpper());
 
-            string? input = Console.ReadLine();
-            if (input != null)
-                Console.WriteLine($"You entered: {input}");
-            else
-                Console.WriteLine($"You haven't entered anything!");
-
-            List<string?> names = new() { "Anna", null, "Bob" };
-            foreach (var name in names)
+            PrintNullable(5); 
+            PrintNullable(null); 
+            void PrintNullable(int? number)
             {
-                Console.WriteLine(name?.Length ?? 0);
+                if (number.HasValue)
+                {
+                    Console.WriteLine(number.Value);
+                    Console.WriteLine(number);
+                }
+                else
+                {
+                    Console.WriteLine("параметр равен null");
+                }
             }
+            int? number = null;
+            Console.WriteLine(number);
+            Console.WriteLine(number.GetValueOrDefault());
+            Console.WriteLine(number.GetValueOrDefault(10));
+            number = 15;
+            Console.WriteLine(number.GetValueOrDefault());
+            Console.WriteLine(number.GetValueOrDefault(10));
+
+
         }
     }      
  }
