@@ -5,16 +5,14 @@ using HtmlAgilityPack;
 
 namespace Katarzhin_ISP_232_Lab_8
 {
-    public delegate void NumberHandler(int number);
     internal class Program{
-        static void Double(int num) => Console.WriteLine($"Doubled: {num * 2}");
-        static void Square(int num) => Console.WriteLine($"Squared: {num * num}");
         static void Main(string[] args){
-
-            NumberHandler handler = Double;
-            handler += Square;
-            handler(5);
+            Player player = new Player();
+            player.OnDeath += () => Console.WriteLine("Enemies celebrating their victory");
+            player.OnDeath += ShowGO;
+            player.TakeDamage(100);
         }
+        static void ShowGO() => Console.WriteLine("GAME OVER");
     }      
  }
 
