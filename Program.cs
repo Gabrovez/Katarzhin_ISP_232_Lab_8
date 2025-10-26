@@ -7,12 +7,26 @@ namespace Katarzhin_ISP_232_Lab_8
 {
     internal class Program{
         static void Main(string[] args){
-            Player player = new Player();
-            player.OnDeath += () => Console.WriteLine("Enemies celebrating their victory");
-            player.OnDeath += ShowGO;
-            player.TakeDamage(100);
+           
+            string? GetUserName(int id)
+            {
+                return id == 1 ? "Alice" : null;
+            }
+            var user = GetUserName(2);
+            Console.WriteLine(user?.ToUpper());
+
+            string? input = Console.ReadLine();
+            if (input != null)
+                Console.WriteLine($"You entered: {input}");
+            else
+                Console.WriteLine($"You haven't entered anything!");
+
+            List<string?> names = new() { "Anna", null, "Bob" };
+            foreach (var name in names)
+            {
+                Console.WriteLine(name?.Length ?? 0);
+            }
         }
-        static void ShowGO() => Console.WriteLine("GAME OVER");
     }      
  }
 
