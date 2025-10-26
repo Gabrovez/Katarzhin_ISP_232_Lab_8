@@ -1,64 +1,58 @@
 ﻿using MyApp.Models;
+using MyClass;
+using Newtonsoft.Json;
+using HtmlAgilityPack;
+
 namespace Katarzhin_ISP_232_Lab_8
 {
-    internal class Program
-    {
-        static void Main(string[] args)
-        {// Я принял позиция как нижний левый угол ибо если верхний будет 10 то тогда приведённые проверки не сходятся типо( 5 меньше 10 и они будет входить,
-         // а 25 наоборот не будет)
-            Point pos = new Point(10, 10);
-            Point pon1 = new Point(15, 15);
-            Point pon2 = new Point(5, 5);
-            Point pon3 = new Point(25, 20);
-            Rectangle rec = new Rectangle();
-            rec.Width = 20;
-            rec.Height = 15;
-            rec.Position = pos;
-            rec.Prinf();
-            Console.WriteLine($"Плошадь: {rec.CalculateArea()}");
-            Console.WriteLine($"Периметр: {rec.CalculatePerimeter()}");
-            Console.WriteLine();
-            rec.ContainsPoint(pon1);
-            rec.ContainsPoint(pon2);
-            rec.ContainsPoint(pon3);
+    internal class Program{
+        static async Task Main(){
+            Fruit apple = new() { Name = "Apple", Quanity = 5 };
+            string json = JsonConvert.SerializeObject(apple);
+            Console.WriteLine("Into json: " + json);
+            var deserialized = JsonConvert.DeserializeObject<Fruit>(json);
+            Console.WriteLine($"Object: {deserialized?.Name} - {deserialized?.Quanity} amount.");
 
-        }
-        public struct Rectangle
-        {
-            public int Width;
-            public int Height;
-            public Point Position;
-            public void Prinf()
-            {
-                Console.WriteLine($"Прямоугольник: позиция ({Position.X}, {Position.Y}), ширина {Width}, высота {Height}");
+            Console.Write("Enter site's url: ");
+            string? url = Console.ReadLine();
+            if (!string.IsNullOrEmpty(url)){
+                try {
+                    HttpClient client = new HttpClient();
+                    string html = await client.GetStringAsync(url);
+                    HtmlDocument doc = new HtmlDocument();
+                    doc.LoadHtml(html);
+                    var titleNode = doc.DocumentNode.SelectSingleNode("//title");
+                    if (titleNode != null){
+                        Console.WriteLine($"Title of the page: {titleNode.InnerText}");
+                    }
+                    else{
+                        Console.WriteLine($"Title of the page is nowhere to be found");
+                    }
+                }
+                catch (Exception ex){
+                    Console.WriteLine("Error: " + ex.Message); 
+                }     
             }
-            public int CalculateArea()
-            {
-                return Width * Height;
-            }
-            public int CalculatePerimeter()
-            {
-                return 2 * (Width + Height);
-            }
-            public void ContainsPoint(Point point)
-            {
-                bool isin = point.X >= Position.X && point.X <= (Position.X + Width) && point.Y >= Position.Y && point.Y <= Position.Y + Height;
-                Console.WriteLine($"Точка ({point.X},{point.X}) внутри прямоугольника: {isin}");
+            else{
+                Console.WriteLine("URL can't be empty.");
             }
 
+
         }
-        public struct Point
-        {
-            public int X;
-            public int Y;
-            public Point(int x, int y)
-            {
-                X = x;
-                Y = y;
-            }
-        }
-    }
+    }      
  }
+
+
+
+
+
+
+
+
+
+
+
+
 namespace Base
 {
     class Company
