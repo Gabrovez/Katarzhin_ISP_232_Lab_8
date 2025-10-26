@@ -4,38 +4,19 @@ using Newtonsoft.Json;
 using HtmlAgilityPack;
 
 namespace Katarzhin_ISP_232_Lab_8
-{
+{// я не понял где первый комит потому что я же вроде его с этого проекта тоже отправил типо и класс у меня новый здесь есть using MyClass; тоже горит, ну ладно
     internal class Program{
-        static async Task Main(){
-            Fruit apple = new() { Name = "Apple", Quanity = 5 };
-            string json = JsonConvert.SerializeObject(apple);
-            Console.WriteLine("Into json: " + json);
-            var deserialized = JsonConvert.DeserializeObject<Fruit>(json);
-            Console.WriteLine($"Object: {deserialized?.Name} - {deserialized?.Quanity} amount.");
+        static void Main(string[] args){
+            string? text = null;
+            Console.WriteLine(text?.Length);
+            string? name = null;
+            string result = name ?? "Default";
+            #nullable enable
+            string? name_ = null;
+            Console.WriteLine(name_!.Length);
+            #nullable disable
+            string hero = null;
 
-            Console.Write("Enter site's url: ");
-            string? url = Console.ReadLine();
-            if (!string.IsNullOrEmpty(url)){
-                try {
-                    HttpClient client = new HttpClient();
-                    string html = await client.GetStringAsync(url);
-                    HtmlDocument doc = new HtmlDocument();
-                    doc.LoadHtml(html);
-                    var titleNode = doc.DocumentNode.SelectSingleNode("//title");
-                    if (titleNode != null){
-                        Console.WriteLine($"Title of the page: {titleNode.InnerText}");
-                    }
-                    else{
-                        Console.WriteLine($"Title of the page is nowhere to be found");
-                    }
-                }
-                catch (Exception ex){
-                    Console.WriteLine("Error: " + ex.Message); 
-                }     
-            }
-            else{
-                Console.WriteLine("URL can't be empty.");
-            }
 
 
         }
