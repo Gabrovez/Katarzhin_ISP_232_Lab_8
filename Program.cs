@@ -13,25 +13,40 @@ namespace Katarzhin_ISP_232_Lab_8
     {
         static void Main(string[] args)
         {
-            PrintLength("Пингвинчики");
-            PrintLength(null);
+            SmartLight sl = new SmartLight();
 
+            sl.OnStateChanged += (message) => Console.WriteLine(message);
+
+            sl.Toggle();
+            sl.Toggle();
+
+            string json = JsonConvert.SerializeObject(sl);
+            Console.WriteLine("into json: " + json);
+            var deser = JsonConvert.DeserializeObject<SmartLight>(json);
+            Console.WriteLine($"Object: IsOn = {deser?.IsOn}, Brightness = {deser?.Brightness}");
 
 
 
         }
-        static void PrintLength(string? input)
-        {
-            if (input != null)
-            {
-                Console.WriteLine($"Length of input: {input.Length}");
-            }
-            else
-            {
-                Console.WriteLine($"There is no line");
-            }
-        }
+        
     }  
+    public class SmartLight
+    {
+        public bool IsOn = false;
+        public int Brightness = 1000;
+
+        public event Action<string> OnStateChanged;
+        public void Toggle()
+        {
+            IsOn = !IsOn;
+            if (IsOn)
+                OnStateChanged?.Invoke($"Light is on");
+            else
+                OnStateChanged?.Invoke($"Light is off");
+        }
+
+
+    }
 
  }
 
