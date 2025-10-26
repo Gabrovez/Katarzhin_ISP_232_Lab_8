@@ -3,30 +3,19 @@ using MyApp.Models;
 using MyClass;
 using Newtonsoft.Json;
 using static Katarzhin_ISP_232_Lab_8.SmartHome;
+using MathLibrary;
+using System.ComponentModel;
 
 namespace Katarzhin_ISP_232_Lab_8
 {
     internal class Program{
         static void Main(string[] args){
-            var tempSensor = new TemperatureSensor();
-            var msensor = new MotionSensor();
-            var slig = new SmartLight();
 
-            tempSensor.OnOverheat += Notifier.SendTemperatureAlert;
-            msensor.OnMotiondet += Notifier.LogMotionEvent;
-            msensor.OnMotiondet += slig.On;
-
-            Console.WriteLine("=== Simulation of smart house ===");
-            tempSensor.CheckTemperature(15);
-            tempSensor.CheckTemperature(35);
-            msensor.DetectMotion(false);
-            msensor.DetectMotion(true);
-
-            msensor.DetectMotion(true);
-            slig.On("motion detecred");
-            Thread.Sleep(3000);
-            slig.Off();
-
+            MathTools ma = new MathTools();
+            int sum = ma.Add(3, 5);
+            Console.WriteLine(sum);
+            int mil = ma.Multiply(3, 5);
+            Console.WriteLine(mil);
 
 
         }

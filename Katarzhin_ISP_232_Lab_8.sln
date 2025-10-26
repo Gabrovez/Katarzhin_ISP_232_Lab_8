@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Katarzhin_ISP_232_Lab_8", "
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyClass", "..\MyClass\MyClass.csproj", "{20C293D5-3522-40AF-9C87-7D911401051D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MathLibrary", "..\MathLibrary\MathLibrary.csproj", "{3426151D-51E2-4E6C-93D3-561DD718FD88}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{20C293D5-3522-40AF-9C87-7D911401051D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{20C293D5-3522-40AF-9C87-7D911401051D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{20C293D5-3522-40AF-9C87-7D911401051D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3426151D-51E2-4E6C-93D3-561DD718FD88}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3426151D-51E2-4E6C-93D3-561DD718FD88}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3426151D-51E2-4E6C-93D3-561DD718FD88}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3426151D-51E2-4E6C-93D3-561DD718FD88}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
