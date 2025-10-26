@@ -4,22 +4,16 @@ using Newtonsoft.Json;
 using HtmlAgilityPack;
 
 namespace Katarzhin_ISP_232_Lab_8
-{// я не понял где первый комит потому что я же вроде его с этого проекта тоже отправил типо и класс у меня новый здесь есть using MyClass; тоже горит, ну ладно
+{
+    public delegate void NumberHandler(int number);
     internal class Program{
+        static void Double(int num) => Console.WriteLine($"Doubled: {num * 2}");
+        static void Square(int num) => Console.WriteLine($"Squared: {num * num}");
         static void Main(string[] args){
-            int? val = null;
-            IsNull(val);
-            val = 22;   
-            IsNull(val);
-            void IsNull(int? obj)
-            {
-                if (obj == null) Console.WriteLine("null");
-                else Console.WriteLine(obj);
-            }
-            Console.WriteLine(val);
 
-
-
+            NumberHandler handler = Double;
+            handler += Square;
+            handler(5);
         }
     }      
  }
