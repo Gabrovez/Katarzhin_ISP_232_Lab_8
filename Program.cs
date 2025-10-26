@@ -9,39 +9,30 @@ using System.Security.Cryptography.X509Certificates;
 
 namespace Katarzhin_ISP_232_Lab_8
 {
-    internal class Program{
+    internal class Program
+    {
         static void Main(string[] args)
         {
-            Thermometer th = new Thermometer();
-
-            th.TemperatureTooHigh += OnTemperatureTooHigh;
-
-            th.Measure(15);
-            th.Measure(150);
+            PrintLength("Пингвинчики");
+            PrintLength(null);
 
 
 
 
         }
-        public static void OnTemperatureTooHigh(string mes)
+        static void PrintLength(string? input)
         {
-            Console.WriteLine(mes);
-        }
-    }    
-    public class Thermometer
-    {
-        public event Action<String> TemperatureTooHigh;
-        public void Measure(int value)
-        {
-            Console.WriteLine($"Temperature measured: {value}°C");
-            if (value > 100)
+            if (input != null)
             {
-                TemperatureTooHigh?.Invoke($"!! Temperature {value}°C goes higher then the recommented value 100°C ");
+                Console.WriteLine($"Length of input: {input.Length}");
+            }
+            else
+            {
+                Console.WriteLine($"There is no line");
             }
         }
+    }  
 
-
-    }
  }
 
 
