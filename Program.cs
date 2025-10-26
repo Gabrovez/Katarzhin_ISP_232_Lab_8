@@ -1,34 +1,32 @@
-﻿using MyApp.Models;
+﻿using HtmlAgilityPack;
+using MyApp.Models;
 using MyClass;
 using Newtonsoft.Json;
-using HtmlAgilityPack;
+using static Katarzhin_ISP_232_Lab_8.SmartHome;
 
 namespace Katarzhin_ISP_232_Lab_8
 {
     internal class Program{
         static void Main(string[] args){
+            var tempSensor = new TemperatureSensor();
+            var msensor = new MotionSensor();
+            var slig = new SmartLight();
 
-            PrintNullable(5); 
-            PrintNullable(null); 
-            void PrintNullable(int? number)
-            {
-                if (number.HasValue)
-                {
-                    Console.WriteLine(number.Value);
-                    Console.WriteLine(number);
-                }
-                else
-                {
-                    Console.WriteLine("параметр равен null");
-                }
-            }
-            int? number = null;
-            Console.WriteLine(number);
-            Console.WriteLine(number.GetValueOrDefault());
-            Console.WriteLine(number.GetValueOrDefault(10));
-            number = 15;
-            Console.WriteLine(number.GetValueOrDefault());
-            Console.WriteLine(number.GetValueOrDefault(10));
+            tempSensor.OnOverheat += Notifier.SendTemperatureAlert;
+            msensor.OnMotiondet += Notifier.LogMotionEvent;
+            msensor.OnMotiondet += slig.On;
+
+            Console.WriteLine("=== Simulation of smart house ===");
+            tempSensor.CheckTemperature(15);
+            tempSensor.CheckTemperature(35);
+            msensor.DetectMotion(false);
+            msensor.DetectMotion(true);
+
+            msensor.DetectMotion(true);
+            slig.On("motion detecred");
+            Thread.Sleep(3000);
+            slig.Off();
+
 
 
         }
