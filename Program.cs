@@ -9,15 +9,34 @@ using System.ComponentModel;
 namespace Katarzhin_ISP_232_Lab_8
 {
     internal class Program{
-        static void Main(string[] args){
+        static async Task Main(){
+            Console.Write("Enter site's url: ");
+            string? url = Console.ReadLine();
+            if (!string.IsNullOrEmpty(url))
+            {
+                try
+                {
+                    HtmlWeb web = new HtmlWeb();
 
-            MathTools ma = new MathTools();
-            int sum = ma.Add(3, 5);
-            Console.WriteLine(sum);
-            int mil = ma.Multiply(3, 5);
-            Console.WriteLine(mil);
+                    HtmlDocument doc = new HtmlDocument();
+                    doc = await web.LoadFromWebAsync(url);
+                    var titleNode = doc.DocumentNode.SelectSingleNode("//title");
+                    if (titleNode != null)
+                    {
+                        Console.WriteLine($"Title of the page: {titleNode.InnerText}");
+                    }
+                    else
+                    {
+                        Console.WriteLine($"Title of the page is nowhere to be found");
+                    }
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine("Error: " + ex.Message);
+                }
 
 
+            }
         }
     }      
  }
@@ -31,7 +50,7 @@ namespace Katarzhin_ISP_232_Lab_8
 
 
 
-
+//static void Main(string[] args)
 
 namespace Base
 {
