@@ -5,24 +5,43 @@ using Newtonsoft.Json;
 using static Katarzhin_ISP_232_Lab_8.SmartHome;
 using MathLibrary;
 using System.ComponentModel;
+using System.Security.Cryptography.X509Certificates;
 
 namespace Katarzhin_ISP_232_Lab_8
 {
     internal class Program{
-        public delegate void Logger(string message);
-        public static void LogToConsole(string message)
-        {
-            Console.WriteLine($"[Log]: {message}");
-        }
         static void Main(string[] args)
         {
-            Logger logger = LogToConsole;
-            logger("Я создал землю для людей");
-            logger("Ну кроме антрактики");
-            logger("Она для пингвинчиков");
-            logger("Люблю пингвинчиков");
+            Thermometer th = new Thermometer();
+
+            th.TemperatureTooHigh += OnTemperatureTooHigh;
+
+            th.Measure(15);
+            th.Measure(150);
+
+
+
+
         }
-    }      
+        public static void OnTemperatureTooHigh(string mes)
+        {
+            Console.WriteLine(mes);
+        }
+    }    
+    public class Thermometer
+    {
+        public event Action<String> TemperatureTooHigh;
+        public void Measure(int value)
+        {
+            Console.WriteLine($"Temperature measured: {value}°C");
+            if (value > 100)
+            {
+                TemperatureTooHigh?.Invoke($"!! Temperature {value}°C goes higher then the recommented value 100°C ");
+            }
+        }
+
+
+    }
  }
 
 
